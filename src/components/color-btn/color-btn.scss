@@ -1,0 +1,20 @@
+.color-btn{
+    width: 15rem;
+    height: 15rem;
+    margin: 20px;
+    text-align: center;
+    line-height: 15rem;
+    color: #fff;
+    transition: box-shadow .2s, transform .2s, opacity .8s;
+}
+
+.color-btn:hover{
+    transform: scale(1.07);
+    -webkit-box-shadow: 0px 7px 21px -4px rgba(0,0,0,0.66);
+    -moz-box-shadow: 0px 7px 21px -4px rgba(0,0,0,0.66);
+    box-shadow: 0px 7px 21px -4px rgba(0,0,0,0.66);
+}
+
+.color-btn:active{
+    transform: scale(1.03);
+}
