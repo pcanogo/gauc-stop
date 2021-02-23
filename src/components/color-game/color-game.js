@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import ColorBtn from '../color-btn/color-btn';
 import "./color-game.scss";
 
@@ -47,28 +47,27 @@ const ColorGame = () => {
         setHighScore(newHighScore);
     }
 
-    const checkAnswer = (el) => {
-        if(answer === el.style.backgroundColor){
-            setScore(score + 1);
-            updateHighScore();
-            // changeBoard();
-            // msgElement.innerHTML = getHappy();
+    const checkAnswer = (color) => {
+        console.log(color)
+        if(answer === color){
+
         } else {
-            setScore(0);
-            el.style.opacity = 0;
-            // msgElement.innerHTML = getSad();
+
         }
     };
 
+    const colorsComponent = useMemo(() => colors.map((color, i) => (
+        <ColorBtn key={color} onClick={checkAnswer} bgColor={color}>Color {i + 1}</ColorBtn>
+    )), [colors]);
 
     return(
     <div className="color-game">
-        <div className="color-game__container">
+        <div className="text__container">
             <p className="color-game__question">
                 What color is... <span id="color">{answer}</span>
             </p>
         </div>
-        <div className="color-game__container color-game__scores">
+        <div className="text__container color-game__scores">
             <p  className="color-game_score">Score: <span id="score">0</span></p>
             <p  className="color-game__highscore">High Score: <span id="highscore">0</span></p>
         </div>
@@ -76,14 +75,7 @@ const ColorGame = () => {
             <p id="game-msg" className="color-game__msg"></p>
         </div>
         <div className="color-game__container">
-            <ColorBtn bgColor={colors[0]}>Color 1</ColorBtn>
-            <ColorBtn bgColor={colors[1]}>Color 2</ColorBtn>
-            <ColorBtn bgColor={colors[2]}>Color 3</ColorBtn>
-        </div>
-        <div className="color-game__container">
-            <ColorBtn bgColor={colors[3]}>Color 4</ColorBtn>
-            <ColorBtn bgColor={colors[4]}>Color 5</ColorBtn>
-            <ColorBtn bgColor={colors[5]}>Color 6</ColorBtn>
+            {colorsComponent}
         </div>
     </div>
     );

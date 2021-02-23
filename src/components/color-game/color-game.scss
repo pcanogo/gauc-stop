@@ -6,9 +6,10 @@
 
     &__container {
         width: 80%;
-        margin: 20px auto;
-        display: flex;
-        justify-content: space-evenly;
+        margin: 10px auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
     }
 
     &__question {
@@ -20,6 +21,12 @@
         & p{
             margin: 5px;
         }
-        
     }
+}
+
+.text__container{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
 }

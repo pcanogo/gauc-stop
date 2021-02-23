@@ -1,26 +1,16 @@
 import React from "react";
 import './color-btn.scss'
 
-const ColorBtn = ({bgColor, setAttemp, children}) => {
-
-    const checkAttemp = (el) => {
-        // if(isCorrect(el)){
-        //     setScore(scores.score++);
-        //     updateHighScore();
-        //     changeBoard();
-        //     msgElement.innerHTML = getHappy();
-        // } else {
-        //     setScore(0);
-        //     el.style.opacity = 0;
-        //     msgElement.innerHTML = getSad();
-        // }
-    };
-
-    return (
-        <div onClick={checkAttemp} style={{backgroundColor: bgColor}} className="color-btn">
+const ColorBtn = ({ bgColor, clicked, onClick, children}) => {
+    return(
+        <div
+            onClick={() => onClick(bgColor)}
+            style={{backgroundColor: bgColor}}
+            className={`color-btn ${clicked ? 'hidden' : ''}`}
+        >
             {children}
         </div>
-    )
-}
+    );
+};
 
 export default ColorBtn;
